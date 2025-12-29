@@ -1,12 +1,21 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo" href="{{ url('/') }}">
-      <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" />
-    </a>
-    <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
-      <img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" />
-    </a>
-  </div>
+<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+  
+  <a class="navbar-brand brand-logo font-weight-bold"
+     href="{{ url('/') }}"
+     style="font-size:28px; letter-spacing:1px; font-weight:800; text-transform:uppercase; color:#ffffff;">
+    Cargo
+  </a>
+
+  <a class="navbar-brand brand-logo-mini font-weight-bold"
+     href="{{ url('/') }}"
+     style="font-size:22px; font-weight:800; text-transform:uppercase; color:#ffffff;">
+    C
+  </a>
+
+</div>
+
+
 
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
