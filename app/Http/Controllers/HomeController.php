@@ -60,7 +60,10 @@ $about = About::where('status', 1)->latest()->first();
 
    public function happyClients()
 {
-    return view('happy-clients');
+      $testimonials = Testimonial::where('status', 1)
+        ->orderBy('sort_order')
+        ->get();
+    return view('happy-clients',compact('testimonials'));
 }
 
 public function blog()
