@@ -13,7 +13,7 @@
       </a>
     </li>
 
-    <!-- Price Management Dropdown -->
+    <!-- Price Management -->
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#priceMenu" aria-expanded="false" aria-controls="priceMenu">
         <span class="icon-bg">
@@ -30,14 +30,11 @@
               Price List
             </a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="{{ route('price-list.create') }}">
               Add Price
             </a>
           </li>
-
-          {{-- Car Types --}}
           <li class="nav-item">
             <a class="nav-link" href="{{ route('car-types.index') }}">
               Car Types
@@ -46,6 +43,114 @@
         </ul>
       </div>
     </li>
+
+    <!-- 🚗 Car Shifting Process -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#processMenu" aria-expanded="false" aria-controls="processMenu">
+        <span class="icon-bg">
+          <i class="mdi mdi-car-multiple menu-icon"></i>
+        </span>
+        <span class="menu-title">Car Shifting Process</span>
+        <i class="menu-arrow"></i>
+      </a>
+
+      <div class="collapse" id="processMenu">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('car-process.index') }}">
+              Process List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('car-process.create') }}">
+              Add New Step
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('car-process.gallery') }}">
+              Manage Images
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- ⭐ Slider Management (NEW) -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#sliderMenu" aria-expanded="false" aria-controls="sliderMenu">
+        <span class="icon-bg">
+          <i class="mdi mdi-image-multiple menu-icon"></i>
+        </span>
+        <span class="menu-title">Home Management</span>
+        <i class="menu-arrow"></i>
+      </a>
+
+      <div class="collapse" id="sliderMenu">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('testimonials.index') }}">
+              Testimonials
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('testimonials.create') }}">
+              Add Testimonial
+            </a>
+          </li>
+           <!-- About Section -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('about.index') }}">
+          About Section
+        </a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{ route('about.create') }}">
+          Add About Content
+        </a>
+      </li>
+        </ul>
+      </div>
+    </li>
+<!-- 📝 Blog Management -->
+<li class="nav-item">
+  <a class="nav-link" data-toggle="collapse" href="#blogMenu" aria-expanded="false" aria-controls="blogMenu">
+    <span class="icon-bg">
+      <i class="mdi mdi-note-text-outline menu-icon"></i>
+    </span>
+    <span class="menu-title">Blog Management</span>
+    <i class="menu-arrow"></i>
+  </a>
+
+  <div class="collapse" id="blogMenu">
+    <ul class="nav flex-column sub-menu">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('blogs.index') }}">
+          Blog List
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('blogs.create') }}">
+          Add Blog
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</li>
+
+    <!-- ⚙️ Settings -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ route('settings.index') }}">
+    <span class="icon-bg">
+    <i class="mdi mdi-cog menu-icon"></i>
+
+    </span>
+    <span class="menu-title">Settings</span>
+  </a>
+</li>
+
 
     <!-- Logout -->
     <li class="nav-item sidebar-user-actions mt-3">

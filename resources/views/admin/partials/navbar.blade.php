@@ -49,15 +49,26 @@
               <span>Profile</span>
               <i class="mdi mdi-account-outline ml-1"></i>
             </a>
-            <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-              <span>Settings</span>
-              <i class="mdi mdi-settings"></i>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-              <span>Log Out</span>
-              <i class="mdi mdi-logout ml-1"></i>
-            </a>
+          <a class="dropdown-item py-1 d-flex align-items-center justify-content-between"
+   href="{{ route('settings.index') }}">
+    <span>Settings</span>
+    <i class="mdi mdi-settings"></i>
+</a>
+
+<div class="dropdown-divider"></div>
+
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button
+        type="submit"
+        class="dropdown-item py-1 d-flex align-items-center justify-content-between btn btn-link p-0 text-left"
+        style="width:100%; text-decoration:none;"
+    >
+        <span>Log Out</span>
+        <i class="mdi mdi-logout ml-1"></i>
+    </button>
+</form>
+
           </div>
         </div>
       </li>
