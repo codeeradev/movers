@@ -140,6 +140,40 @@
   </div>
 </li>
 
+<!-- 📩 Requests Management -->
+<li class="nav-item">
+  <a class="nav-link" data-toggle="collapse" href="#requestMenu"
+     aria-expanded="false" aria-controls="requestMenu">
+    <span class="icon-bg">
+      <i class="mdi mdi-email-outline menu-icon"></i>
+    </span>
+    <span class="menu-title">Requests</span>
+    <i class="menu-arrow"></i>
+  </a>
+
+  <div class="collapse" id="requestMenu">
+    <ul class="nav flex-column sub-menu">
+
+      <!-- Contact Messages -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('contact-messages.index') }}">
+          Contact Messages
+        </a>
+      </li>
+
+      <!-- Car Move Requests -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('car-move-requests.index') }}">
+          Car Move Requests
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</li>
+
+
+
     <!-- ⚙️ Settings -->
 <li class="nav-item">
   <a class="nav-link" href="{{ route('settings.index') }}">

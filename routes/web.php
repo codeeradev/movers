@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\CarMoveRequestController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
@@ -23,6 +25,8 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/price-search', [FrontendController::class, 'index'])->name('frontend.price-search');
 Route::post('/car-movers/request', [FrontendController::class, 'requestMove'])
     ->name('car-movers.request');
+    Route::post('/contact-submit', [FrontendController::class, 'submit'])
+    ->name('contact.submit');
 
 Route::middleware([
     'auth:sanctum',
@@ -57,5 +61,28 @@ Route::get('about-ajax', [\App\Http\Controllers\Admin\AboutController::class, 'a
         Route::resource('about', AboutController::class);
 Route::get('blogs/ajax', [BlogController::class, 'ajax'])->name('blogs.ajax');
 Route::resource('blogs', BlogController::class);
+ Route::resource('contact-messages', ContactMessageController::class)
+        ->only(['index', 'show', 'destroy']);
+
+    // 🔹 Datatable AJAX (separate route)
+    Route::get('contact-messages-ajax',
+        [ContactMessageController::class, 'ajax']
+    )->name('contact-messages.ajax');
+
+    // 🔹 Mark inactive (custom action)
+    Route::post('contact-messages/{id}/inactive',
+        [ContactMessageController::class, 'markInactive']
+    )->name('contact-messages.inactive');
+
+         Route::resource('car-move-requests', CarMoveRequestController::class)
+        ->only(['index','show','destroy']);
+
+    Route::get('car-move-requests-ajax',
+        [CarMoveRequestController::class,'ajax']
+    )->name('car-move-requests.ajax');
+
+    Route::post('car-move-requests/{id}/status',
+        [CarMoveRequestController::class,'updateStatus']);
+
 
 });
