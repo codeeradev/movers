@@ -1,17 +1,38 @@
+
+<style>
+/* ===== FULL LOGO ===== */
+.logo-full {
+    max-height: 45px;   /* desktop navbar */
+    width: auto;
+    object-fit: contain;
+}
+
+/* ===== MINI LOGO ===== */
+.logo-mini {
+    max-height: 32px;   /* mobile / collapsed */
+    width: auto;
+    object-fit: contain;
+}
+</style>
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
   
-  <a class="navbar-brand brand-logo font-weight-bold"
-     href="{{ url('/') }}"
-     style="font-size:28px; letter-spacing:1px; font-weight:800; text-transform:uppercase; color:#ffffff;">
-    Cargo
-  </a>
+ {{-- FULL LOGO --}}
+<a class="navbar-brand brand-logo d-none d-lg-flex align-items-center"
+   href="{{ url('/') }}">
+    <img src="{{ asset('uploads/settings/' . site_setting('logo')) }}"
+         alt="{{ site_setting('site_name') ?? 'Cargo' }}"
+         class="logo-full">
+</a>
 
-  <a class="navbar-brand brand-logo-mini font-weight-bold"
-     href="{{ url('/') }}"
-     style="font-size:22px; font-weight:800; text-transform:uppercase; color:#ffffff;">
-    C
-  </a>
+{{-- MINI LOGO --}}
+<a class="navbar-brand brand-logo-mini d-flex d-lg-none align-items-center"
+   href="{{ url('/') }}">
+    <img src="{{ asset('uploads/settings/' . site_setting('logo')) }}"
+         alt="C"
+         class="logo-mini">
+</a>
+
 
 </div>
 
