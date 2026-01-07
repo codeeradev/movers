@@ -10,16 +10,15 @@ if (!function_exists('site_setting')) {
      * @param mixed $default
      * @return mixed
      */
-    function site_setting($key, $default = null)
-    {
-        $settings = cache()->rememberForever('site_settings', function () {
-            return Setting::first();
-        });
+   function site_setting($key, $default = null)
+{
+    $settings = Setting::first();
 
-        if (!$settings) {
-            return $default;
-        }
-
-        return $settings->{$key} ?? $default;
+    if (!$settings) {
+        return $default;
     }
+
+    return $settings->{$key} ?? $default;
+}
+
 }

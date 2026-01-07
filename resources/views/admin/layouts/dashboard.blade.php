@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+@if(site_setting('favicon'))
+<link rel="icon" href="{{ asset('uploads/settings/'.site_setting('favicon')) }}">
+@endif
 
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
