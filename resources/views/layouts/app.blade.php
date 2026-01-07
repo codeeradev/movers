@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @if(site_setting('favicon'))
+<link rel="icon" href="{{ asset('uploads/settings/'.site_setting('favicon')) }}">
+@endif
+
     @stack('styles')
   
 </head>
