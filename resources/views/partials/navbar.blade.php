@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">CAR<span>GO</span></a>
+  <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+    <img src="{{ asset('uploads/settings/' . site_setting('logo')) }}"
+         alt="{{ site_setting('site_name') ?? 'Logo' }}"
+         class="site-logo">
+</a>
+
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -13,9 +19,9 @@
 <li class="nav-item">
     <a href="{{ route('about-us') }}" class="nav-link">About</a>
 </li>
-<li class="nav-item">
+<!--<li class="nav-item">
     <a href="{{ route('pricing') }}" class="nav-link">Pricing</a>
-</li>
+</li>-->
 <li class="nav-item">
     <a href="{{ route('happy-clients') }}" class="nav-link">Happy Clients</a>
 </li>

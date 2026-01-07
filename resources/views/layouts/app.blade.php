@@ -20,9 +20,34 @@
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @stack('styles')
+  
 </head>
 <body>
+  <style>
+    /* ===== SITE LOGO ===== */
+.site-logo {
+    max-height: 60px;      /* perfect for navbar */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
 
+/* Desktop */
+
+
+/* Mobile */
+@media (max-width: 768px) {
+    .site-logo {
+        max-height: 45px;
+         background: black;
+    }
+}
+
+/* Optional hover effect */
+.navbar-brand:hover .site-logo {
+    transform: scale(1.05);
+}
+</style>
 @include('partials.navbar')
 
 @yield('content')

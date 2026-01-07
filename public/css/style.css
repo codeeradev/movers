@@ -8194,6 +8194,7 @@ h1, h2, h3, h4, h5,
       -o-transition: .3s all ease-out;
       transition: .3s all ease-out; }
     .ftco-navbar-light.scrolled .navbar-brand {
+      background: #000;
       color: #000000; }
 
 .navbar-brand {
