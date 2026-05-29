@@ -44,18 +44,10 @@ public function store(Request $request)
         'hero_button_url'   => 'nullable|string|max:255',
         'hero_form_title'   => 'nullable|string|max:255',
         'hero_background_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-
-        'home_services_title'    => 'nullable|string|max:255',
-        'home_services_subtitle' => 'nullable|string|max:255',
         'home_choose_title'      => 'nullable|string|max:255',
         'home_choose_subtitle'   => 'nullable|string|max:255',
         'home_stats_title'       => 'nullable|string|max:255',
         'home_stats_subtitle'    => 'nullable|string|max:255',
-
-        'home_services_items'               => 'nullable|array',
-        'home_services_items.*.icon'        => 'nullable|string|max:100',
-        'home_services_items.*.title'       => 'nullable|string|max:255',
-        'home_services_items.*.description' => 'nullable|string',
 
         'home_choose_items'               => 'nullable|array',
         'home_choose_items.*.icon'        => 'nullable|string|max:100',
@@ -68,11 +60,6 @@ public function store(Request $request)
     ]);
 
     $settings = Setting::first();
-    $data['home_services_items'] = $this->normalizeItems($request->input('home_services_items', []), [
-        'icon',
-        'title',
-        'description',
-    ]);
     $data['home_choose_items'] = $this->normalizeItems($request->input('home_choose_items', []), [
         'icon',
         'title',
@@ -152,18 +139,10 @@ public function store(Request $request)
             'hero_button_text' => 'Request a Quote',
             'hero_button_url' => '#request-quote',
             'hero_form_title' => 'Request a Move',
-            'home_services_title' => 'What We Offer',
-            'home_services_subtitle' => 'Our Services',
             'home_choose_title' => 'Why Choose Us',
             'home_choose_subtitle' => 'Best Reasons',
             'home_stats_title' => 'Statistics',
             'home_stats_subtitle' => 'Our Numbers',
-            'home_services_items' => [
-                ['icon' => 'flaticon-route', 'title' => 'Door to Door Delivery', 'description' => 'We pick up your car from your location and deliver it safely to your destination anywhere in India.'],
-                ['icon' => 'flaticon-rent', 'title' => 'Safe & Secure Transport', 'description' => 'Your car is transported using secure carriers with proper safety measures and experienced drivers.'],
-                ['icon' => 'flaticon-online-booking', 'title' => 'Easy Booking', 'description' => 'Simple and quick booking process with transparent pricing and complete delivery support.'],
-                ['icon' => 'flaticon-customer-support', 'title' => '24/7 Customer Support', 'description' => 'Dedicated support team to assist you at every step from pickup to final delivery.'],
-            ],
             'home_choose_items' => [
                 ['icon' => 'flaticon-search', 'title' => 'Inspection', 'description' => 'Every vehicle undergoes a detailed inspection before pickup and before final delivery to ensure complete safety.'],
                 ['icon' => 'flaticon-cash', 'title' => 'Secure Loading', 'description' => 'Vehicles are loaded using professional equipment and secured properly during transportation.'],

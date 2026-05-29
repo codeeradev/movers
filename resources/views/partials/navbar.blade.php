@@ -23,6 +23,9 @@
 <li class="nav-item">
     <a href="{{ route('about-us') }}" class="nav-link">About</a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('services') }}" class="nav-link">Services</a>
+</li>
 <!--<li class="nav-item">
     <a href="{{ route('pricing') }}" class="nav-link">Pricing</a>
 </li>-->

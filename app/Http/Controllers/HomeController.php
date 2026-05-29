@@ -10,6 +10,7 @@ use App\Models\CarProcess;
 use App\Models\Testimonial;
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\Service;
 class HomeController extends Controller
 {
 public function index()
@@ -37,13 +38,18 @@ public function index()
         ? Blog::where('status', 1)->latest()->take(3)->get()
         : collect();
 
+    $services = Schema::hasTable('services')
+        ? Service::where('status', 1)->orderBy('sort_order')->orderBy('id')->get()
+        : collect();
+
     return view('home', compact(
         'states',
         'carTypes',
         'processes',
         'testimonials',
         'about',
-         'blogs' 
+         'blogs',
+         'services'
     ));
 }
 
@@ -97,6 +103,32 @@ public function blogShow($slug)
         ->get();
 
     return view('blog-single', compact('blog', 'recentBlogs'));
+}
+
+public function services()
+{
+    $services = Schema::hasTable('services')
+        ? Service::where('status', 1)->orderBy('sort_order')->orderBy('id')->get()
+        : collect();
+
+    return view('services', compact('services'));
+}
+
+public function serviceShow($slug)
+{
+    abort_unless(Schema::hasTable('services'), 404);
+
+    $service = Service::where('slug', $slug)
+        ->where('status', 1)
+        ->firstOrFail();
+
+    $recentServices = Service::where('status', 1)
+        ->where('id', '!=', $service->id)
+        ->orderBy('id', 'desc')
+        ->take(3)
+        ->get();
+
+    return view('service-single', compact('service', 'recentServices'));
 }
     public function contact()
     {

@@ -44,6 +44,32 @@
       </div>
     </li>
 
+    <!-- Services Management -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#servicesMenu" aria-expanded="false" aria-controls="servicesMenu">
+        <span class="icon-bg">
+          <i class="mdi mdi-shape menu-icon"></i>
+        </span>
+        <span class="menu-title">Services Management</span>
+        <i class="menu-arrow"></i>
+      </a>
+
+      <div class="collapse" id="servicesMenu">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin-services.index') }}">
+              Service List
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin-services.create') }}">
+              Add Service
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
     <!-- 🚗 Car Shifting Process -->
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#processMenu" aria-expanded="false" aria-controls="processMenu">

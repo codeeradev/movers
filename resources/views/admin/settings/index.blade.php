@@ -4,7 +4,6 @@
 
 @section('content')
 @php
-    $serviceItems = old('home_services_items', $settings?->home_services_items ?: $defaults['home_services_items']);
     $chooseItems = old('home_choose_items', $settings?->home_choose_items ?: $defaults['home_choose_items']);
     $statItems = old('home_stats_items', $settings?->home_stats_items ?: $defaults['home_stats_items']);
 @endphp
@@ -103,46 +102,6 @@
                             <img src="{{ asset('uploads/settings/'.$settings->hero_background_image) }}" alt="Hero background" class="mt-2 img-fluid rounded" style="max-height:180px">
                         @endif
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow-sm border-0 mb-4">
-            <div class="card-header bg-white border-0 py-3">
-                <strong>Homepage Services</strong>
-            </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Services Subtitle</label>
-                        <input type="text" name="home_services_subtitle" class="form-control" value="{{ old('home_services_subtitle', $settings->home_services_subtitle ?? $defaults['home_services_subtitle']) }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Services Title</label>
-                        <input type="text" name="home_services_title" class="form-control" value="{{ old('home_services_title', $settings->home_services_title ?? $defaults['home_services_title']) }}">
-                    </div>
-                </div>
-
-                <div class="row g-3 mt-2">
-                    @foreach($serviceItems as $index => $item)
-                        <div class="col-lg-6">
-                            <div class="border rounded p-3 h-100">
-                                <div class="fw-semibold mb-2">Service {{ $index + 1 }}</div>
-                                <div class="mb-2">
-                                    <label class="form-label">Icon Class</label>
-                                    <input type="text" name="home_services_items[{{ $index }}][icon]" class="form-control" value="{{ $item['icon'] ?? '' }}" placeholder="flaticon-route">
-                                </div>
-                                <div class="mb-2">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" name="home_services_items[{{ $index }}][title]" class="form-control" value="{{ $item['title'] ?? '' }}">
-                                </div>
-                                <div>
-                                    <label class="form-label">Description</label>
-                                    <textarea name="home_services_items[{{ $index }}][description]" class="form-control" rows="3">{{ $item['description'] ?? '' }}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
             </div>
         </div>

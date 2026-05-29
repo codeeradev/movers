@@ -22,9 +22,6 @@ class Setting extends Model
         'hero_button_url',
         'hero_form_title',
         'hero_background_image',
-        'home_services_title',
-        'home_services_subtitle',
-        'home_services_items',
         'home_choose_title',
         'home_choose_subtitle',
         'home_choose_items',
@@ -34,7 +31,6 @@ class Setting extends Model
     ];
 
     protected $casts = [
-        'home_services_items' => 'array',
         'home_choose_items' => 'array',
         'home_stats_items' => 'array',
     ];
