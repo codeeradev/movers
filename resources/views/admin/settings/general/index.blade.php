@@ -12,7 +12,7 @@
 
         <div class="card-body p-4">
 
-            <form action="{{ route('settings-general.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row g-4">
@@ -29,19 +29,19 @@
                     {{-- WEBSITE EMAIL --}}
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Website Email</label>
-                        <input type="email" name="site_email"
+                        <input type="email" name="email"
                                class="form-control"
-                               value="{{ setting('site_email') }}"
+                               value="{{ setting('email') }}"
                                placeholder="Enter email">
                     </div>
 
                     {{-- LOGO --}}
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Website Logo</label>
-                        <input type="file" name="site_logo" class="form-control">
-                        @if(setting('site_logo'))
+                        <input type="file" name="logo" class="form-control">
+                        @if(setting('logo'))
                         
-    <img src="{{ asset('uploads/settings/' . setting('site_logo')) }}"
+    <img src="{{ asset('uploads/settings/' . setting('logo')) }}"
          class="mt-2"
          style="height:50px">
 @endif
@@ -52,9 +52,9 @@
                     {{-- FAVICON --}}
                     <div class="col-md-6">
                         <label class="form-label fw-semibold">Favicon</label>
-                        <input type="file" name="site_favicon" class="form-control">
-                        @if(setting('site_favicon'))
-                            <img src="{{ asset('uploads/settings/' . setting('site_favicon')) }}"
+                        <input type="file" name="favicon" class="form-control">
+                        @if(setting('favicon'))
+                            <img src="{{ asset('uploads/settings/' . setting('favicon')) }}"
                                  class="mt-2"
                                  style="height:40px">
                         @endif

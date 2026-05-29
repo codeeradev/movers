@@ -1,10 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
   <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-    <img src="{{ asset('uploads/settings/' . site_setting('logo')) }}"
-         alt="{{ site_setting('site_name') ?? 'Logo' }}"
-         class="site-logo">
-</a>
+    @if(site_setting('logo'))
+      <img src="{{ asset('uploads/settings/' . site_setting('logo')) }}"
+           alt="{{ site_setting('site_name') ?? 'Logo' }}"
+           class="site-logo">
+    @else
+      <span class="brand-text">{{ site_setting('site_name', 'Laxis Cargo Movers') }}</span>
+    @endif
+  </a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">

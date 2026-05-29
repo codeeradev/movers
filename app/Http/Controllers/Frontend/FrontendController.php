@@ -59,6 +59,10 @@ public function requestMove(Request $request)
         'contact_no'      => 'required|string|max:20',
         'pickup_location' => 'required|string|max:255',
         'drop_location'   => 'required|string|max:255',
+        'pickup_state_id' => 'required|exists:states,id',
+        'drop_state_id'   => 'required|exists:states,id',
+        'car_type_id'     => 'required|exists:car_types,id',
+        'price_range'     => 'nullable|string|max:50',
     ]);
 
     // ✅ SAVE TO DATABASE (status = new)
@@ -68,6 +72,10 @@ public function requestMove(Request $request)
         'contact_no'      => $request->contact_no,
         'pickup_location' => $request->pickup_location,
         'drop_location'   => $request->drop_location,
+        'pickup_state_id' => $request->pickup_state_id,
+        'drop_state_id'   => $request->drop_state_id,
+        'car_type_id'     => $request->car_type_id,
+        'price_range'     => $request->price_range,
         'status'          => 'new', // 🔥 DEFAULT STATUS
     ]);
 

@@ -31,9 +31,7 @@ public function store(Request $request)
     // TEXT SETTINGS
     $settings = [
         'site_name',
-        'site_email',
-        'whatsapp_app_key',
-        'whatsapp_auth_key',
+        'email',
     ];
 
     foreach ($settings as $key) {
@@ -55,10 +53,7 @@ public function store(Request $request)
 
         $logo->move(public_path('uploads/settings'), $logoName);
 
-        \App\Models\Setting::updateOrCreate(
-            ['key' => 'site_logo'],
-            ['value' => $logoName] // 👈 ONLY IMAGE NAME
-        );
+        \App\Models\Setting::updateOrCreate(['id' => 1], ['logo' => $logoName]);
     }
 
     /*
@@ -73,10 +68,7 @@ public function store(Request $request)
 
         $favicon->move(public_path('uploads/settings'), $faviconName);
 
-        \App\Models\Setting::updateOrCreate(
-            ['key' => 'site_favicon'],
-            ['value' => $faviconName] // 👈 ONLY IMAGE NAME
-        );
+        \App\Models\Setting::updateOrCreate(['id' => 1], ['favicon' => $faviconName]);
     }
 
     return back()->with('success', 'Settings updated successfully');

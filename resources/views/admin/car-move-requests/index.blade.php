@@ -73,6 +73,10 @@
                         <th>Contact</th>
                         <th>Pickup</th>
                         <th>Drop</th>
+                        <th>Pickup State</th>
+                        <th>Drop State</th>
+                        <th>Vehicle Type</th>
+                        <th>Budget</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -99,7 +103,12 @@
                 <p><strong>Contact:</strong> <span id="vContact"></span></p>
                 <p><strong>Pickup:</strong> <span id="vPickup"></span></p>
                 <p><strong>Drop:</strong> <span id="vDrop"></span></p>
+                <p><strong>Pickup State:</strong> <span id="vPickupState"></span></p>
+                <p><strong>Drop State:</strong> <span id="vDropState"></span></p>
+                <p><strong>Vehicle Type:</strong> <span id="vCarType"></span></p>
+                <p><strong>Price Range:</strong> <span id="vPriceRange"></span></p>
                 <p><strong>Status:</strong> <span id="vStatus"></span></p>
+                <p><strong>Submitted At:</strong> <span id="vCreatedAt"></span></p>
             </div>
 
         </div>
@@ -144,6 +153,10 @@ $(function () {
             { data: 'contact_no' },
             { data: 'pickup_location' },
             { data: 'drop_location' },
+            { data: 'pickup_state' },
+            { data: 'drop_state' },
+            { data: 'car_type' },
+            { data: 'price_range' },
             { data: 'status' },
             { data: 'action', orderable:false, searchable:false }
         ]
@@ -166,7 +179,12 @@ $(function () {
             $('#vContact').text(res.contact_no);
             $('#vPickup').text(res.pickup_location);
             $('#vDrop').text(res.drop_location);
+            $('#vPickupState').text(res.pickup_state || '-');
+            $('#vDropState').text(res.drop_state || '-');
+            $('#vCarType').text(res.car_type || '-');
+            $('#vPriceRange').text(res.price_range || '-');
             $('#vStatus').text(res.status);
+            $('#vCreatedAt').text(res.created_at || '-');
             $('#viewModal').modal('show');
         });
     });

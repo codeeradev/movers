@@ -36,6 +36,13 @@
     transition: all 0.3s ease;
 }
 
+.brand-text {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+}
+
 /* Desktop */
 
 
@@ -44,6 +51,10 @@
     .site-logo {
         max-height: 45px;
          background: black;
+    }
+
+    .brand-text {
+        font-size: 20px;
     }
 }
 

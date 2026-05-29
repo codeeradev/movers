@@ -12,7 +12,11 @@ if (!function_exists('site_setting')) {
      */
    function site_setting($key, $default = null)
 {
-    $settings = Setting::first();
+    try {
+        $settings = Setting::first();
+    } catch (\Throwable $e) {
+        return $default;
+    }
 
     if (!$settings) {
         return $default;
@@ -21,4 +25,11 @@ if (!function_exists('site_setting')) {
     return $settings->{$key} ?? $default;
 }
 
+}
+
+if (!function_exists('setting')) {
+    function setting($key, $default = null)
+    {
+        return site_setting($key, $default);
+    }
 }

@@ -3,61 +3,41 @@
 @section('title', 'Home')
 
 @section('content')
-
-@include('sections.hero-wrap')
-
-   @include('sections.search')
-   @include('sections.services')
-
-
- @include('sections.choose')
-
-     @include('sections.work')
- @include('sections.testimonials')
-
- @include('sections.about-us')
-	 @include('sections.blog')	
-
-   
-
-
+    @include('sections.hero-wrap')
+    @include('sections.search')
+    @include('sections.services')
+    @include('sections.choose')
+    @include('sections.statistics')
+    @include('sections.work')
+    @include('sections.testimonials')
+    @include('sections.about-us')
+    @include('sections.blog')
 @endsection
+
 @push('scripts')
 <script>
 $(document).ready(function () {
   if ($('.carousel-car').length > 0) {
     $('.carousel-car').owlCarousel({
       loop: true,
-
-      /* 🔁 AUTOPLAY */
       autoplay: true,
-      autoplayTimeout: 4500,   // slow autoplay (increase = slower)
+      autoplayTimeout: 4500,
       autoplayHoverPause: true,
-
-      /* 📐 LAYOUT */
       margin: 20,
-
-      /* ⬅️➡️ ARROWS */
       nav: true,
       navText: [
         "<span class='ion-ios-arrow-back'></span>",
         "<span class='ion-ios-arrow-forward'></span>"
       ],
-
-      /* 🔘 DOTS */
       dots: true,
-
-      /* 📱 MOBILE OPTIMIZATION */
       touchDrag: true,
-      mouseDrag: false,  // desktop pe mouse drag off (clean UX)
+      mouseDrag: false,
       pullDrag: true,
       freeDrag: false,
-
-      /* 📏 RESPONSIVE */
       responsive: {
         0: {
           items: 1,
-          mouseDrag: true   // mobile swipe ON
+          mouseDrag: true
         },
         768: {
           items: 2
@@ -70,5 +50,4 @@ $(document).ready(function () {
   }
 });
 </script>
-
 @endpush

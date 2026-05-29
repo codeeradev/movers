@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('car_move_requests')) {
+            return;
+        }
+
         Schema::create('car_move_requests', function (Blueprint $table) {
-    $table->id();
-    $table->string('name');
-    $table->string('email');
-    $table->string('contact_no');
-    $table->string('pickup_location');
-    $table->string('drop_location');
-    $table->timestamps();
-});
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('contact_no');
+            $table->string('pickup_location');
+            $table->string('drop_location');
+            $table->timestamps();
+        });
 
     }
 

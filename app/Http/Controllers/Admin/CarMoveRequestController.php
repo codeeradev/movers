@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CarMoveRequest;
+use App\Models\CarType;
+use App\Models\State;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CarMoveRequestController extends Controller
 {
@@ -21,6 +22,7 @@ class CarMoveRequestController extends Controller
     public function ajax(Request $request)
 {
     $query = CarMoveRequest::query();
+    $query->with(['pickupState', 'dropState', 'carType']);
 
     if ($request->status) {
         $query->where('status', $request->status);
@@ -54,7 +56,17 @@ class CarMoveRequestController extends Controller
             'contact_no' => e($r->contact_no),
             'pickup_location' => e($r->pickup_location),
             'drop_location' => e($r->drop_location),
-            'status' => '<span class="badge bg-'.($r->status=='new'?'danger':'secondary').'">'.ucfirst($r->status).'</span>',
+            'pickup_state' => e(optional($r->pickupState)->name ?? '-'),
+            'drop_state' => e(optional($r->dropState)->name ?? '-'),
+            'car_type' => e(optional($r->carType)->name ?? '-'),
+            'price_range' => e($r->price_range ?? '-'),
+            'status' => '<span class="badge bg-'.(
+                $r->status === 'new' ? 'danger' : (
+                    $r->status === 'processing' ? 'warning' : (
+                        $r->status === 'completed' ? 'success' : 'secondary'
+                    )
+                )
+            ).'">'.ucfirst($r->status).'</span>',
             'action' => '
                 <button class="btn btn-sm btn-info view-btn" data-id="'.$r->id.'">View</button>
                 <button class="btn btn-sm btn-success change-status" data-id="'.$r->id.'" data-status="processing">Processing</button>
@@ -94,7 +106,21 @@ class CarMoveRequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $request = CarMoveRequest::with(['pickupState', 'dropState', 'carType'])->findOrFail($id);
+
+        return response()->json([
+            'name' => $request->name,
+            'email' => $request->email,
+            'contact_no' => $request->contact_no,
+            'pickup_location' => $request->pickup_location,
+            'drop_location' => $request->drop_location,
+            'pickup_state' => optional($request->pickupState)->name,
+            'drop_state' => optional($request->dropState)->name,
+            'car_type' => optional($request->carType)->name,
+            'price_range' => $request->price_range,
+            'status' => ucfirst($request->status),
+            'created_at' => $request->created_at?->format('d M, Y h:i A'),
+        ]);
     }
 
     /**
@@ -111,6 +137,18 @@ class CarMoveRequestController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    public function updateStatus(Request $request, string $id)
+    {
+        $request->validate([
+            'status' => 'required|in:new,processing,completed,cancelled',
+        ]);
+
+        $moveRequest = CarMoveRequest::findOrFail($id);
+        $moveRequest->update(['status' => $request->status]);
+
+        return response()->json(['status' => true]);
     }
 
     /**
