@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
 
 class SettingsController extends Controller
 {
@@ -97,13 +98,26 @@ public function store(Request $request)
     }
 
     if ($request->hasFile('hero_background_image')) {
-        if ($settings && $settings->hero_background_image && file_exists(public_path('uploads/settings/'.$settings->hero_background_image))) {
-            unlink(public_path('uploads/settings/'.$settings->hero_background_image));
-        }
+        $uploadDirectory = public_path('uploads/settings');
+        File::ensureDirectoryExists($uploadDirectory);
 
         $background = $request->file('hero_background_image');
-        $backgroundName = 'hero_bg_'.time().'.'.$background->getClientOriginalExtension();
-        $background->move(public_path('uploads/settings'), $backgroundName);
+        $backgroundName = 'hero_bg_' . time() . '.' . $background->getClientOriginalExtension();
+
+        try {
+            $background->move($uploadDirectory, $backgroundName);
+        } catch (\Throwable $e) {
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'hero_background_image' => 'The hero background image could not be saved. Please try again with a smaller JPG, PNG, or WEBP file.',
+                ]);
+        }
+
+        if ($settings && $settings->hero_background_image && file_exists($uploadDirectory . DIRECTORY_SEPARATOR . $settings->hero_background_image)) {
+            @unlink($uploadDirectory . DIRECTORY_SEPARATOR . $settings->hero_background_image);
+        }
+
         $data['hero_background_image'] = $backgroundName;
     }
 

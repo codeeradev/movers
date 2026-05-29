@@ -98,7 +98,13 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-label fw-semibold">Hero Background Image</label>
-                        <input type="file" name="hero_background_image" class="form-control">
+                        <input type="file" name="hero_background_image" accept="image/*" class="form-control">
+                        @error('hero_background_image')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                        @enderror
+                        <small class="text-muted d-block mt-1">
+                            Larger images will be compressed automatically before upload.
+                        </small>
                         @if(!empty($settings?->hero_background_image))
                             <img src="{{ asset('uploads/settings/'.$settings->hero_background_image) }}" alt="Hero background" class="mt-2 img-fluid rounded" style="max-height:180px">
                         @endif
@@ -189,3 +195,63 @@
     </form>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+(function () {
+    const input = document.querySelector('input[name="hero_background_image"]');
+    if (!input || typeof window.FileReader === 'undefined' || typeof window.DataTransfer === 'undefined') {
+        return;
+    }
+
+    const MAX_BYTES = 1900 * 1024;
+    const MAX_WIDTH = 1920;
+    const MAX_HEIGHT = 1080;
+
+    function replaceInputFile(blob) {
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(new File([blob], 'hero-background.jpg', { type: 'image/jpeg' }));
+        input.files = dataTransfer.files;
+    }
+
+    input.addEventListener('change', function () {
+        const file = input.files && input.files[0];
+        if (!file || file.size <= MAX_BYTES) {
+            return;
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+
+        image.onload = function () {
+            URL.revokeObjectURL(objectUrl);
+
+            let width = image.width;
+            let height = image.height;
+            const ratio = Math.min(MAX_WIDTH / width, MAX_HEIGHT / height, 1);
+            width = Math.round(width * ratio);
+            height = Math.round(height * ratio);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+
+            const context = canvas.getContext('2d');
+            context.drawImage(image, 0, 0, width, height);
+
+            canvas.toBlob(function (blob) {
+                if (blob) {
+                    replaceInputFile(blob);
+                }
+            }, 'image/jpeg', 0.82);
+        };
+
+        image.onerror = function () {
+            URL.revokeObjectURL(objectUrl);
+        };
+
+        image.src = objectUrl;
+    });
+})();
+</script>
+@endpush
