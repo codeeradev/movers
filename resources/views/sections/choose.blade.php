@@ -1,5 +1,12 @@
 @php
-    $chooseItems = site_setting('home_choose_items') ?: [
+    $rawChooseItems = data_get($settings ?? null, 'home_choose_items') ?? site_setting('home_choose_items');
+
+    if (is_string($rawChooseItems)) {
+        $decodedChooseItems = json_decode($rawChooseItems, true);
+        $rawChooseItems = json_last_error() === JSON_ERROR_NONE ? $decodedChooseItems : [];
+    }
+
+    $chooseItems = $rawChooseItems ?: [
         ['icon' => 'flaticon-search', 'title' => 'Inspection', 'description' => 'Every vehicle undergoes a detailed inspection before pickup and before final delivery to ensure complete safety.'],
         ['icon' => 'flaticon-cash', 'title' => 'Secure Loading', 'description' => 'Vehicles are loaded using professional equipment and secured properly during transportation.'],
         ['icon' => 'flaticon-24-hours', 'title' => 'Live Tracking Support', 'description' => 'Get regular updates and tracking assistance throughout the transportation process.'],
@@ -7,6 +14,11 @@
         ['icon' => 'flaticon-insurance', 'title' => 'Fully Insured Transportation', 'description' => 'Additional protection options available for peace of mind during transit.'],
         ['icon' => 'flaticon-happy', 'title' => 'Customer Satisfaction', 'description' => 'Our support team remains available even after delivery to ensure a smooth experience.'],
     ];
+
+    if (is_string($chooseItems)) {
+        $decodedChooseItems = json_decode($chooseItems, true);
+        $chooseItems = json_last_error() === JSON_ERROR_NONE ? $decodedChooseItems : [];
+    }
 @endphp
 
 <section class="ftco-section">

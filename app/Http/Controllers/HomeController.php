@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\CarProcess;
 use App\Models\Testimonial;
 use App\Models\About;
+use App\Models\Setting;
 use App\Models\Blog;
 use App\Models\Service;
 class HomeController extends Controller
@@ -42,6 +43,8 @@ public function index()
         ? Service::where('status', 1)->orderBy('sort_order')->orderBy('id')->get()
         : collect();
 
+    $settings = Schema::hasTable('settings') ? Setting::first() : null;
+
     return view('home', compact(
         'states',
         'carTypes',
@@ -49,7 +52,8 @@ public function index()
         'testimonials',
         'about',
          'blogs',
-         'services'
+         'services',
+         'settings'
     ));
 }
 
