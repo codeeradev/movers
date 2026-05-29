@@ -81,7 +81,8 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-label fw-semibold">Hero Title</label>
-                        <input type="text" name="hero_title" class="form-control" value="{{ old('hero_title', $settings->hero_title ?? $defaults['hero_title']) }}">
+                        <textarea name="hero_title" class="form-control" rows="4">{{ old('hero_title', $settings->hero_title ?? $defaults['hero_title']) }}</textarea>
+                        <small class="text-muted">Use separate lines here if you want the hero title to break like the homepage design.</small>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label fw-semibold">Hero Description</label>

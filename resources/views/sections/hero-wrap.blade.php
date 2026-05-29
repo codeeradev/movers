@@ -11,8 +11,13 @@ $heroBackground = site_setting('hero_background_image')
         <div class="row no-gutters slider-text hero-home-row align-items-center">
             <div class="col-lg-7 col-md-12 ftco-animate d-flex align-items-center hero-copy-col">
                 <div class="text hero-copy">
+                    @if(site_setting('hero_subtitle'))
+                        <div class="hero-kicker mb-2">
+                            {{ site_setting('hero_subtitle') }}
+                        </div>
+                    @endif
                     <h1 class="mb-4 hero-title">
-                        {!! site_setting('hero_heading_html', "Now <span>It's easy for you</span><br><span>to move your car</span>") !!}
+                        {!! nl2br(e(site_setting('hero_title', "Now\nIt's easy for you\nto move your car"))) !!}
                     </h1>
                     <p class="hero-description">
                         {{ site_setting('hero_description', 'We provide safe and reliable vehicle transportation services to your desired location.') }}
@@ -198,6 +203,14 @@ $heroBackground = site_setting('hero_background_image')
         letter-spacing: -0.03em;
         color: #fff;
         margin-bottom: 22px;
+    }
+
+    .hero-home .hero-kicker {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
     }
 
     .hero-home .hero-title span {

@@ -37,7 +37,7 @@ public function store(Request $request)
         'logo'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         'favicon'     => 'nullable|image|mimes:jpg,jpeg,png,ico,webp|max:1024',
 
-        'hero_title'        => 'nullable|string|max:255',
+        'hero_title'        => 'nullable|string|max:500',
         'hero_subtitle'     => 'nullable|string|max:255',
         'hero_description'  => 'nullable|string',
         'hero_button_text'  => 'nullable|string|max:100',
@@ -133,7 +133,7 @@ public function store(Request $request)
     private function defaults(): array
     {
         return [
-            'hero_title' => 'Safe & Reliable Vehicle Transportation Across India',
+            'hero_title' => "Now\nIt's easy for you\nto move your car",
             'hero_subtitle' => 'Your Journey. Your Vehicle. Delivered.',
             'hero_description' => 'Laxis Cargo Movers provides professional vehicle transportation and cargo logistics services across India. We ensure safe handling, secure loading, timely delivery, and complete customer support throughout the transportation process.',
             'hero_button_text' => 'Request a Quote',
