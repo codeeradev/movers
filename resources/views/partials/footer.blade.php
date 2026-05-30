@@ -1,60 +1,92 @@
-<footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section" style="padding: 40px;">
   <div class="container">
     <div class="row mb-5">
 
       <!-- ABOUT -->
-      <div class="col-md">
+      <div class="col-md-3">
         <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">About CarGo</h2>
+
+          {{-- Logo --}}
+          @php $logoPath = site_setting('logo'); @endphp
+          @if($logoPath && file_exists(public_path('uploads/settings/' . $logoPath)))
+          <a href="{{ url('/') }}" class="d-inline-block mb-3">
+            <img
+              src="{{ asset('uploads/settings/' . $logoPath) }}"
+              alt="{{ site_setting('site_name', 'Laxis Cargo Movers') }}"
+              style="max-height: 60px; width: auto;">
+          </a>
+          @else
+          <h2 class="ftco-heading-2">
+            <a href="{{ url('/') }}" style="color:inherit; text-decoration:none;">
+              {{ site_setting('site_name', 'Laxis Cargo Movers') }}
+            </a>
+          </h2>
+          @endif
+
           <p>
-            CarGo is a trusted logistics and transportation partner,
-            delivering safe, fast, and reliable cargo solutions across cities
-            and states. Your shipment, our responsibility.
+            Trusted door-to-door vehicle transportation across India.
+            Safe, reliable, and on-time delivery — your vehicle, our responsibility.
           </p>
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
             <li class="ftco-animate">
-              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="https://www.facebook.com/LaxisCargo" target="_blank" rel="noopener">
+                <span class="icon-facebook"></span>
+              </a>
             </li>
             <li class="ftco-animate">
-              <a href="#"><span class="icon-instagram"></span></a>
-            </li>
-            <li class="ftco-animate">
-              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="https://www.instagram.com/laxiscargo/" target="_blank" rel="noopener">
+                <span class="icon-instagram"></span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       <!-- COMPANY -->
-      <div class="col-md">
-        <div class="ftco-footer-widget mb-4 ml-md-5">
+      <div class="col-md-2">
+        <div class="ftco-footer-widget mb-4 ml-md-3">
           <h2 class="ftco-heading-2">Company</h2>
           <ul class="list-unstyled">
-            <li><a href="about.php" class="py-2 d-block">About Us</a></li>
-            <li><a href="{{ route('services') }}" class="py-2 d-block">Our Services</a></li>
-            <li><a href="pricing.php" class="py-2 d-block">Pricing</a></li>
-            <li><a href="terms.php" class="py-2 d-block">Terms & Conditions</a></li>
-            <li><a href="privacy.php" class="py-2 d-block">Privacy Policy</a></li>
+            <li><a href="{{ url('/about') }}" class="py-2 d-block">About Us</a></li>
+            <li><a href="{{ route('services') }}" class="py-2 d-block">Services</a></li>
+            <li><a href="{{ url('/blog') }}" class="py-2 d-block">Blog</a></li>
+            <li><a href="{{ url('/terms') }}" class="py-2 d-block">Terms &amp; Conditions</a></li>
+            <li><a href="{{ url('/privacy') }}" class="py-2 d-block">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- SERVICES -->
-      <div class="col-md">
+      <!-- SERVICES — dynamic 4 from DB -->
+      <div class="col-md-3">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">Services</h2>
           <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">Road Freight</a></li>
-            <li><a href="#" class="py-2 d-block">House Shifting</a></li>
-            <li><a href="#" class="py-2 d-block">Warehouse Storage</a></li>
-            <li><a href="#" class="py-2 d-block">Express Delivery</a></li>
-            <li><a href="#" class="py-2 d-block">Corporate Logistics</a></li>
+            @php
+            $footerServices = \App\Models\Service::where('status', 1)
+            ->orderBy('created_at', 'desc')
+            ->take(4)
+            ->get();
+            @endphp
+            @forelse($footerServices as $fs)
+            <li>
+              <a href="{{ route('services.single', $fs->slug) }}" class="py-2 d-block">
+                {{ $fs->title }}
+              </a>
+            </li>
+            @empty
+            <li><a href="{{ route('services') }}" class="py-2 d-block">View All Services</a></li>
+            @endforelse
+            <li>
+              <a href="{{ route('services') }}" class="py-2 d-block" style="color:#e8401c; font-weight:600;">
+                View All &rarr;
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
       <!-- CONTACT -->
-      <div class="col-md">
+      <div class="col-md-4">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">Contact Us</h2>
           <div class="block-23 mb-3">
@@ -62,20 +94,31 @@
               <li>
                 <span class="icon icon-map-marker"></span>
                 <span class="text">
-                  Plot No. 21, Industrial Area, Hisar, Haryana, India
+                  House No. 164, 18th Cross B, Hoysala Nagar,
+                  Ramamurthy Nagar, Bengaluru – 560016
                 </span>
               </li>
               <li>
-                <a href="tel:+919999999999">
+                <a href="tel:+919731166449">
                   <span class="icon icon-phone"></span>
-                  <span class="text">+91 99999 99999</span>
+                  <span class="text">+91 97311 66449</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:support@CarGo.com">
-                  <span class="icon icon-envelope"></span>
-                  <span class="text">support@CarGo.com</span>
+                <a href="tel:+917899418883">
+                  <span class="icon icon-phone"></span>
+                  <span class="text">+91 78994 18883</span>
                 </a>
+              </li>
+              <li>
+                <a href="mailto:laxiscargomovers@gmail.com">
+                  <span class="icon icon-envelope"></span>
+                  <span class="text">laxiscargomovers@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <span class="icon icon-clock-o"></span>
+                <span class="text">Office Hours: 9:00 AM – 9:00 PM</span>
               </li>
             </ul>
           </div>
@@ -88,9 +131,7 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <p class="mb-0">
-          &copy;
-          <script>document.write(new Date().getFullYear());</script>
-          CarGo Logistics. All rights reserved.
+          &copy; {{ date('Y') }} Laxis Cargo Movers. All Rights Reserved.
         </p>
       </div>
     </div>
