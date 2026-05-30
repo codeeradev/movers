@@ -11,22 +11,22 @@
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #e8401c;
+    color: #FC983C;
     margin-bottom: 12px;
     position: relative;
     padding-left: 42px;
   }
 
-  .testimony-section .subheading::before {
+  /* .testimony-section .subheading::before {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     width: 32px;
     height: 2px;
-    background: #e8401c;
+    background: #FC983C;
     transform: translateY(-50%);
-  }
+  } */
 
   .testimony-section h2 {
     font-size: 36px;
@@ -83,7 +83,7 @@
   .testimony-avatar-wrap svg {
     width: 40px;
     height: 40px;
-    color: #e8401c;
+    color: #FC983C;
   }
 
   /* ── Review text ── */
@@ -110,7 +110,7 @@
   .testimony-divider {
     width: 40px;
     height: 2px;
-    background: #e8401c;
+    background: #FC983C;
     border-radius: 2px;
     opacity: 0.4;
   }
