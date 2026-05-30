@@ -34,7 +34,13 @@ $heroBackground = site_setting('hero_background_image')
 {{-- ── Main Section ── --}}
 @push('styles')
 <style>
-    .hero-wrap.hero-wrap-2, .hero-wrap.hero-wrap-2 .slider-text {
+    .slider-text .bread:after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .hero-wrap.hero-wrap-2,
+    .hero-wrap.hero-wrap-2 .slider-text {
         height: 400px !important;
     }
 
@@ -124,7 +130,7 @@ $heroBackground = site_setting('hero_background_image')
         padding-left: 14px;
     }
 
-    /* .sidebar-card-header h3::before {
+    .sidebar-card-header h3::before {
         content: '';
         position: absolute;
         left: 0;
@@ -134,7 +140,7 @@ $heroBackground = site_setting('hero_background_image')
         height: 16px;
         background: #FC983C;
         border-radius: 2px;
-    } */
+    }
 
     .sidebar-card-body {
         padding: 20px 24px;
