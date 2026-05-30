@@ -4,10 +4,40 @@
 
 @push('styles')
 <style>
+    /* ── Fix navbar on light header pages ── */
+    /* Forces navbar links/logo to dark when over this light header */
+    .light-page-header~* .navbar,
+    body.light-header .navbar {
+        background: #ffffff !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Simpler approach: target navbar directly on this page */
+    .ftco-navbar-light.scrolled,
+    .ftco-navbar-light {
+        background: #ffffff !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    .ftco-navbar-light .navbar-nav .nav-link {
+        color: #1a1a2e !important;
+    }
+
+    .ftco-navbar-light .navbar-nav .nav-link:hover,
+    .ftco-navbar-light .navbar-nav .active>.nav-link {
+        color: #e8401c !important;
+    }
+
+    .ftco-navbar-light .navbar-brand {
+        color: #1a1a2e !important;
+    }
+
     /* ── Page Header ── */
     .service-page-header {
         background: #f4f6fb;
-        padding: 60px 0 50px;
+        padding-top: 120px;
+        /* pushes content below fixed navbar */
+        padding-bottom: 50px;
         position: relative;
         overflow: hidden;
         border-bottom: 1.5px solid #eaedf5;
@@ -16,10 +46,10 @@
     .service-page-header::before {
         content: '';
         position: absolute;
-        top: -80px;
-        right: -80px;
-        width: 280px;
-        height: 280px;
+        top: -60px;
+        right: -60px;
+        width: 260px;
+        height: 260px;
         border-radius: 50%;
         background: rgba(232, 64, 28, 0.06);
         pointer-events: none;
@@ -30,8 +60,8 @@
         position: absolute;
         bottom: -60px;
         left: -40px;
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         background: rgba(232, 64, 28, 0.04);
         pointer-events: none;
@@ -40,8 +70,9 @@
     .service-page-header .breadcrumb-wrap {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 18px;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 16px;
     }
 
     .service-page-header .breadcrumb-wrap a {
@@ -55,7 +86,7 @@
         color: #e8401c;
     }
 
-    .service-page-header .breadcrumb-wrap span {
+    .service-page-header .breadcrumb-wrap .sep {
         font-size: 13px;
         color: #d1d5db;
     }
@@ -92,7 +123,8 @@
 
     @media (max-width: 767px) {
         .service-page-header {
-            padding: 40px 0 32px;
+            padding-top: 100px;
+            padding-bottom: 32px;
         }
 
         .service-page-header h1 {
@@ -106,7 +138,6 @@
         background: #ffffff;
     }
 
-    /* ── Service Image ── */
     .service-detail-image {
         width: 100%;
         border-radius: 16px;
@@ -123,7 +154,6 @@
         object-fit: contain;
     }
 
-    /* ── Service Content ── */
     .service-content-body {
         font-size: 15.5px;
         color: #4b5563;
@@ -205,7 +235,6 @@
         padding: 20px 24px;
     }
 
-    /* Recent service item */
     .recent-service-item {
         display: flex;
         align-items: center;
@@ -323,9 +352,9 @@
     <div class="container">
         <div class="breadcrumb-wrap">
             <a href="{{ url('/') }}">Home</a>
-            <span>/</span>
+            <span class="sep">/</span>
             <a href="{{ route('services') }}">Services</a>
-            <span>/</span>
+            <span class="sep">/</span>
             <span class="current">{{ $service->title }}</span>
         </div>
         <span class="header-tag">Our Services</span>
@@ -338,14 +367,10 @@
     <div class="container">
         <div class="row gy-5">
 
-            {{-- Content --}}
             <div class="col-lg-8 ftco-animate">
-
                 @if(!empty($service->image) && file_exists(public_path('uploads/services/'.$service->image)))
                 <div class="service-detail-image">
-                    <img
-                        src="{{ asset('uploads/services/'.$service->image) }}"
-                        alt="{{ $service->title }}">
+                    <img src="{{ asset('uploads/services/'.$service->image) }}" alt="{{ $service->title }}">
                 </div>
                 @endif
 
@@ -354,10 +379,8 @@
                     {!! $service->description !!}
                 </div>
                 @endif
-
             </div>
 
-            {{-- Sidebar --}}
             <div class="col-lg-4 ftco-animate">
                 <div class="service-sidebar">
 
@@ -371,9 +394,7 @@
                             <a href="{{ route('services.single', $recent->slug) }}" class="recent-service-item">
                                 <div class="recent-service-thumb">
                                     @if(!empty($recent->image) && file_exists(public_path('uploads/services/'.$recent->image)))
-                                    <img
-                                        src="{{ asset('uploads/services/'.$recent->image) }}"
-                                        alt="{{ $recent->title }}">
+                                    <img src="{{ asset('uploads/services/'.$recent->image) }}" alt="{{ $recent->title }}">
                                     @else
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="3" y="3" width="18" height="18" rx="2" />
