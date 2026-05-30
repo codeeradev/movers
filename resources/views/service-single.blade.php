@@ -39,6 +39,10 @@ $heroBackground = site_setting('hero_background_image')
         content: none !important;
     }
 
+    .slider-text .bread{
+        padding-left: 0;
+    }
+
     .hero-wrap.hero-wrap-2,
     .hero-wrap.hero-wrap-2 .slider-text {
         height: 400px !important;
