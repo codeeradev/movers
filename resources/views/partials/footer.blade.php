@@ -11,7 +11,7 @@
           @if($logoPath && file_exists(public_path('uploads/settings/' . $logoPath)))
           <a href="{{ url('/') }}" class="d-inline-block mb-3">
             <img
-              src="{{ asset('uploads/settings/' . $logoPath) }}"
+              src="{{ asset('assets/images/footer_logo.png') }}"
               alt="{{ site_setting('site_name', 'Laxis Cargo Movers') }}"
               style="max-height: 60px; width: auto;">
           </a>
