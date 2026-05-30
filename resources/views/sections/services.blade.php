@@ -185,7 +185,7 @@ $serviceItems = $services ?? collect();
       </div>
     </div>
 
-    <div class="row gy-4">
+    <div class="row gy-4" style="row-gap: 20px;">
       @foreach($serviceItems as $service)
       <div class="col-12 col-md-6 col-lg-4 ftco-animate">
         <div class="service-card">
