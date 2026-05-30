@@ -6,33 +6,34 @@
 <style>
     /* ── Page Header ── */
     .service-page-header {
-        background: linear-gradient(135deg, #1a1a2e 0%, #2d1f3d 100%);
-        padding: 80px 0 60px;
+        background: #f4f6fb;
+        padding: 60px 0 50px;
         position: relative;
         overflow: hidden;
+        border-bottom: 1.5px solid #eaedf5;
     }
 
     .service-page-header::before {
         content: '';
         position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 300px;
-        height: 300px;
+        top: -80px;
+        right: -80px;
+        width: 280px;
+        height: 280px;
         border-radius: 50%;
-        background: rgba(232, 64, 28, 0.08);
+        background: rgba(232, 64, 28, 0.06);
         pointer-events: none;
     }
 
     .service-page-header::after {
         content: '';
         position: absolute;
-        bottom: -80px;
+        bottom: -60px;
         left: -40px;
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
-        background: rgba(232, 64, 28, 0.05);
+        background: rgba(232, 64, 28, 0.04);
         pointer-events: none;
     }
 
@@ -40,12 +41,12 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
 
     .service-page-header .breadcrumb-wrap a {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.55);
+        color: #9ca3af;
         text-decoration: none;
         transition: color 0.2s;
     }
@@ -56,28 +57,19 @@
 
     .service-page-header .breadcrumb-wrap span {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.3);
+        color: #d1d5db;
     }
 
     .service-page-header .breadcrumb-wrap .current {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .service-page-header h1 {
-        font-size: 42px;
-        font-weight: 900;
-        color: #ffffff;
-        line-height: 1.2;
-        margin: 0;
-        position: relative;
-        z-index: 1;
+        color: #6b7280;
+        font-weight: 500;
     }
 
     .service-page-header .header-tag {
         display: inline-block;
-        background: rgba(232, 64, 28, 0.15);
-        border: 1px solid rgba(232, 64, 28, 0.3);
+        background: rgba(232, 64, 28, 0.08);
+        border: 1px solid rgba(232, 64, 28, 0.2);
         color: #e8401c;
         font-size: 12px;
         font-weight: 700;
@@ -88,13 +80,23 @@
         margin-bottom: 16px;
     }
 
+    .service-page-header h1 {
+        font-size: 40px;
+        font-weight: 900;
+        color: #1a1a2e;
+        line-height: 1.2;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+
     @media (max-width: 767px) {
         .service-page-header {
-            padding: 60px 0 40px;
+            padding: 40px 0 32px;
         }
 
         .service-page-header h1 {
-            font-size: 28px;
+            font-size: 26px;
         }
     }
 
@@ -267,23 +269,23 @@
 
     /* CTA Box */
     .sidebar-cta {
-        background: linear-gradient(135deg, #1a1a2e, #2d1f3d);
+        background: linear-gradient(135deg, #fff3f0, #fff8f6);
         border-radius: 16px;
         padding: 32px 24px;
         text-align: center;
-        border: none;
+        border: 1.5px solid rgba(232, 64, 28, 0.15);
     }
 
     .sidebar-cta h4 {
         font-size: 18px;
         font-weight: 800;
-        color: #ffffff;
+        color: #1a1a2e;
         margin-bottom: 10px;
     }
 
     .sidebar-cta p {
         font-size: 13.5px;
-        color: rgba(255, 255, 255, 0.6);
+        color: #6b7280;
         margin-bottom: 20px;
         line-height: 1.6;
     }
@@ -309,7 +311,7 @@
         color: #ffffff;
         text-decoration: none;
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(232, 64, 28, 0.3);
+        box-shadow: 0 8px 20px rgba(232, 64, 28, 0.25);
     }
 </style>
 @endpush
@@ -339,7 +341,6 @@
             {{-- Content --}}
             <div class="col-lg-8 ftco-animate">
 
-                {{-- Service Image --}}
                 @if(!empty($service->image) && file_exists(public_path('uploads/services/'.$service->image)))
                 <div class="service-detail-image">
                     <img
@@ -348,7 +349,6 @@
                 </div>
                 @endif
 
-                {{-- Description --}}
                 @if(!empty($service->description))
                 <div class="service-content-body">
                     {!! $service->description !!}
@@ -361,7 +361,6 @@
             <div class="col-lg-4 ftco-animate">
                 <div class="service-sidebar">
 
-                    {{-- Recent Services --}}
                     @if(!empty($recentServices) && $recentServices->isNotEmpty())
                     <div class="sidebar-card">
                         <div class="sidebar-card-header">
@@ -390,7 +389,6 @@
                     </div>
                     @endif
 
-                    {{-- CTA Box --}}
                     <div class="sidebar-cta">
                         <h4>Need This Service?</h4>
                         <p>Get in touch with us today and we'll help you with the best solution.</p>
