@@ -11,10 +11,10 @@ $heroBackground = site_setting('hero_background_image')
 : asset('images/bg_1.jpg');
 @endphp
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ $heroBackground }}');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ $heroBackground }}');height:400px;">
     <div class="overlay"></div>
     <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-start">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 400px;">
             <div class="col-md-9 ftco-animate pb-5">
                 <p class="breadcrumbs">
                     <span class="mr-2">
