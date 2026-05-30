@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>@yield('title', 'Autoroad')</title>
     <meta charset="utf-8">
@@ -20,73 +21,77 @@
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v=1.1.0">
     @if(site_setting('favicon'))
-<link rel="icon" href="{{ asset('uploads/settings/'.site_setting('favicon')) }}">
-@endif
+    <link rel="icon" href="{{ asset('uploads/settings/'.site_setting('favicon')) }}">
+    @endif
 
     @stack('styles')
-  
+
 </head>
+
 <body>
-  <style>
-    /* ===== SITE LOGO ===== */
-.site-logo {
-    max-height: 60px;      /* perfect for navbar */
-    width: auto;
-    object-fit: contain;
-    transition: all 0.3s ease;
-}
+    <style>
+        /* ===== SITE LOGO ===== */
+        .site-logo {
+            max-height: 60px;
+            /* perfect for navbar */
+            width: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            background: transparent !important;
+        }
 
-.brand-text {
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.02em;
-}
+        .brand-text {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
 
-/* Desktop */
+        /* Desktop */
 
 
-/* Mobile */
-@media (max-width: 768px) {
-    .site-logo {
-        max-height: 45px;
-         background: black;
-    }
+        /* Mobile */
+        @media (max-width: 768px) {
+            .site-logo {
+                max-height: 45px;
+                background: black;
+            }
 
-    .brand-text {
-        font-size: 20px;
-    }
-}
+            .brand-text {
+                font-size: 20px;
+            }
+        }
 
-/* Optional hover effect */
-.navbar-brand:hover .site-logo {
-    transform: scale(1.05);
-}
-</style>
-@include('partials.navbar')
+        /* Optional hover effect */
+        .navbar-brand:hover .site-logo {
+            transform: scale(1.05);
+        }
+    </style>
+    @include('partials.navbar')
 
-@yield('content')
+    @yield('content')
 
-@include('partials.footer')
-{{-- AJAX Script --}}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
-<script src="{{ asset('js/popper.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('js/aos.js') }}"></script>
-<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-<script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
-<script src="{{ asset('js/scrollax.min.js') }}"></script>
-<script src="{{ asset('js/google-map.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@stack('scripts')
+    @include('partials.footer')
+    {{-- AJAX Script --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ asset('js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('js/google-map.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @stack('scripts')
 </body>
+
 </html>
