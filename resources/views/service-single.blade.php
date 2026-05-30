@@ -34,7 +34,7 @@ $heroBackground = site_setting('hero_background_image')
 {{-- ── Main Section ── --}}
 @push('styles')
 <style>
-    .hero-wrap.hero-wrap-2 .slider-text {
+    .hero-wrap.hero-wrap-2, .hero-wrap.hero-wrap-2 .slider-text {
         height: 400px !important;
     }
 
