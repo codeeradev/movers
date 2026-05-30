@@ -21,6 +21,7 @@ $heroBackground = site_setting('hero_background_image')
             <a href="{{ route('services') }}">About <i class="ion-ios-arrow-forward"></i></a>
           </span>
         </p>
+        <h1 class="mb-3 bread">About Us</h1>
       </div>
     </div>
   </div>
