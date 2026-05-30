@@ -132,7 +132,7 @@ $heroBackground = site_setting('hero_background_image')
         transform: translateY(-50%);
         width: 4px;
         height: 16px;
-        background: #e8401c;
+        background: #FC983C;
         border-radius: 2px;
     }
 
@@ -164,7 +164,7 @@ $heroBackground = site_setting('hero_background_image')
     }
 
     .recent-service-item:hover .recent-service-title {
-        color: #e8401c;
+        color: #FC983C;
     }
 
     .recent-service-thumb {
@@ -227,7 +227,7 @@ $heroBackground = site_setting('hero_background_image')
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #e8401c;
+        background: #FC983C;
         color: #ffffff;
         font-size: 14px;
         font-weight: 700;
