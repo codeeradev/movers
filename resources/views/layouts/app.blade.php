@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v=1.1.0">
     @if(site_setting('favicon'))
 <link rel="icon" href="{{ asset('uploads/settings/'.site_setting('favicon')) }}">
 @endif
