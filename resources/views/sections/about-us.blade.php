@@ -69,7 +69,7 @@
         color: #FC983C;
         margin-bottom: 14px;
         position: relative;
-        padding-left: 42px;
+        /* padding-left: 42px; */
     }
 
     /* .about-content .subheading::before {
