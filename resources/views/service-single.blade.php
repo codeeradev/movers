@@ -2,137 +2,38 @@
 
 @section('title', $service->title)
 
+@section('content')
+
+{{-- ── Page Header ── --}}
+@php
+$heroBackground = site_setting('hero_background_image')
+? asset('uploads/settings/' . site_setting('hero_background_image'))
+: asset('images/bg_1.jpg');
+@endphp
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ $heroBackground }}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs">
+                    <span class="mr-2">
+                        <a href="{{ url('/') }}">Home <i class="ion-ios-arrow-forward"></i></a>
+                    </span>
+                    <span class="mr-2">
+                        <a href="{{ route('services') }}">Services <i class="ion-ios-arrow-forward"></i></a>
+                    </span>
+                    <span>{{ $service->title }}</span>
+                </p>
+                <h1 class="mb-3 bread">{{ $service->title }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ── Main Section ── --}}
 @push('styles')
 <style>
-    /* ── Fix navbar on light header pages ── */
-    /* Forces navbar links/logo to dark when over this light header */
-    .light-page-header~* .navbar,
-    body.light-header .navbar {
-        background: #ffffff !important;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-    }
-
-    /* Simpler approach: target navbar directly on this page */
-    .ftco-navbar-light.scrolled,
-    .ftco-navbar-light {
-        background: #ffffff !important;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
-    }
-
-    .ftco-navbar-light .navbar-nav .nav-link {
-        color: #1a1a2e !important;
-    }
-
-    .ftco-navbar-light .navbar-nav .nav-link:hover,
-    .ftco-navbar-light .navbar-nav .active>.nav-link {
-        color: #e8401c !important;
-    }
-
-    .ftco-navbar-light .navbar-brand {
-        color: #1a1a2e !important;
-    }
-
-    /* ── Page Header ── */
-    .service-page-header {
-        background: #f4f6fb;
-        padding-top: 120px;
-        /* pushes content below fixed navbar */
-        padding-bottom: 50px;
-        position: relative;
-        overflow: hidden;
-        border-bottom: 1.5px solid #eaedf5;
-    }
-
-    .service-page-header::before {
-        content: '';
-        position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-        background: rgba(232, 64, 28, 0.06);
-        pointer-events: none;
-    }
-
-    .service-page-header::after {
-        content: '';
-        position: absolute;
-        bottom: -60px;
-        left: -40px;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background: rgba(232, 64, 28, 0.04);
-        pointer-events: none;
-    }
-
-    .service-page-header .breadcrumb-wrap {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 16px;
-    }
-
-    .service-page-header .breadcrumb-wrap a {
-        font-size: 13px;
-        color: #9ca3af;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .service-page-header .breadcrumb-wrap a:hover {
-        color: #e8401c;
-    }
-
-    .service-page-header .breadcrumb-wrap .sep {
-        font-size: 13px;
-        color: #d1d5db;
-    }
-
-    .service-page-header .breadcrumb-wrap .current {
-        font-size: 13px;
-        color: #6b7280;
-        font-weight: 500;
-    }
-
-    .service-page-header .header-tag {
-        display: inline-block;
-        background: rgba(232, 64, 28, 0.08);
-        border: 1px solid rgba(232, 64, 28, 0.2);
-        color: #e8401c;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 5px 14px;
-        border-radius: 20px;
-        margin-bottom: 16px;
-    }
-
-    .service-page-header h1 {
-        font-size: 40px;
-        font-weight: 900;
-        color: #1a1a2e;
-        line-height: 1.2;
-        margin: 0;
-        position: relative;
-        z-index: 1;
-    }
-
-    @media (max-width: 767px) {
-        .service-page-header {
-            padding-top: 100px;
-            padding-bottom: 32px;
-        }
-
-        .service-page-header h1 {
-            font-size: 26px;
-        }
-    }
-
-    /* ── Main Content ── */
     .service-detail-section {
         padding: 70px 0;
         background: #ffffff;
@@ -296,7 +197,6 @@
         transition: color 0.25s ease;
     }
 
-    /* CTA Box */
     .sidebar-cta {
         background: linear-gradient(135deg, #fff3f0, #fff8f6);
         border-radius: 16px;
@@ -345,24 +245,6 @@
 </style>
 @endpush
 
-@section('content')
-
-{{-- ── Page Header ── --}}
-<div class="service-page-header">
-    <div class="container">
-        <div class="breadcrumb-wrap">
-            <a href="{{ url('/') }}">Home</a>
-            <span class="sep">/</span>
-            <a href="{{ route('services') }}">Services</a>
-            <span class="sep">/</span>
-            <span class="current">{{ $service->title }}</span>
-        </div>
-        <span class="header-tag">Our Services</span>
-        <h1>{{ $service->title }}</h1>
-    </div>
-</div>
-
-{{-- ── Main Section ── --}}
 <section class="service-detail-section">
     <div class="container">
         <div class="row gy-5">
