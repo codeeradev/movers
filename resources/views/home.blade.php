@@ -8,7 +8,7 @@
     @include('sections.services')
     @include('sections.choose')
     @include('sections.statistics')
-    @include('sections.work')
+    <!-- @include('sections.work') -->
     @include('sections.testimonials')
     @include('sections.about-us')
     @include('sections.blog')
