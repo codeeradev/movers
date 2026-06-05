@@ -86,7 +86,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Vendor bundle (admin theme scripts, NO bootstrap conflict now) -->
-<script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></hscript>
+<script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 
 <!-- Bootstrap 5 (ONLY ONCE, AT BOTTOM) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -55,7 +55,17 @@ $heroBackground = site_setting('hero_background_image')
                         </div>
                         <p>
                             <span>Address:</span>
-                            {{ site_setting('address', 'Address not available') }}
+                            @php
+                                $addressText = site_setting('address', 'Address not available');
+                                $paymentLink = site_setting('payment_link');
+                            @endphp
+                            @if($paymentLink)
+                                <a href="{{ $paymentLink }}" target="_blank" rel="noopener">
+                                    {{ $addressText }}
+                                </a>
+                            @else
+                                {{ $addressText }}
+                            @endif
                         </p>
 
                     </div>

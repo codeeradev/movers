@@ -3,6 +3,7 @@
 
 <head>
     <title>@yield('title', 'Autoroad')</title>
+    <meta name="description" content="{{ trim($__env->yieldContent('meta_description', '')) }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

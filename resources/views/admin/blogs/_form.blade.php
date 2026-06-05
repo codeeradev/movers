@@ -14,6 +14,29 @@
                    required>
         </div>
 
+        <!-- Meta Title -->
+        <div class="form-group mb-3">
+            <label>Meta Title</label>
+            <input type="text"
+                   name="meta_title"
+                   class="form-control"
+                   placeholder="Enter meta title"
+                   value="{{ old('meta_title', $blog->meta_title ?? '') }}">
+            <small class="text-muted">Optional SEO title for search engines.</small>
+        </div>
+
+        <!-- Meta Description -->
+        <div class="form-group mb-3">
+            <label>Meta Description</label>
+            <textarea
+                name="meta_description"
+                rows="3"
+                class="form-control"
+                placeholder="Write meta description"
+            >{{ old('meta_description', $blog->meta_description ?? '') }}</textarea>
+            <small class="text-muted">Recommended 140-160 characters.</small>
+        </div>
+
         <!-- Blog Image -->
         <div class="form-group mb-3">
             <label>Blog Image</label>
@@ -67,6 +90,10 @@
                     Inactive
                 </option>
             </select>
+        </div>
+
+        <div class="alert alert-light border mb-3">
+            Blog FAQs are managed from FAQ Management by selecting the Blog scope and choosing a specific blog.
         </div>
 
         <!-- Buttons -->

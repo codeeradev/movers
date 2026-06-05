@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\CarProcess;
 use App\Models\Testimonial;
 use App\Models\About;
+use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Blog;
 use App\Models\Service;
@@ -43,6 +44,14 @@ public function index()
         ? Service::where('status', 1)->orderBy('sort_order')->orderBy('id')->get()
         : collect();
 
+    $homeFaqs = Schema::hasTable('faqs')
+        ? Faq::where('status', 1)
+            ->where('scope', 'home')
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get()
+        : collect();
+
     $settings = Schema::hasTable('settings') ? Setting::first() : null;
 
     return view('home', compact(
@@ -53,6 +62,7 @@ public function index()
         'about',
          'blogs',
          'services',
+         'homeFaqs',
          'settings'
     ));
 }
@@ -106,7 +116,16 @@ public function blogShow($slug)
         ->take(3)
         ->get();
 
-    return view('blog-single', compact('blog', 'recentBlogs'));
+    $blogFaqs = Schema::hasTable('faqs')
+        ? Faq::where('status', 1)
+            ->where('scope', 'blog')
+            ->where('blog_id', $blog->id)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get()
+        : collect();
+
+    return view('blog-single', compact('blog', 'recentBlogs', 'blogFaqs'));
 }
 
 public function services()
@@ -132,7 +151,16 @@ public function serviceShow($slug)
         ->take(3)
         ->get();
 
-    return view('service-single', compact('service', 'recentServices'));
+    $serviceFaqs = Schema::hasTable('faqs')
+        ? Faq::where('status', 1)
+            ->where('scope', 'service')
+            ->where('service_id', $service->id)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get()
+        : collect();
+
+    return view('service-single', compact('service', 'recentServices', 'serviceFaqs'));
 }
     public function contact()
     {

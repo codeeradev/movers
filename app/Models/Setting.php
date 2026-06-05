@@ -11,6 +11,7 @@ class Setting extends Model
         'phone',
         'email',
         'address',
+        'payment_link',
         'footer_text',
         'google_map',
         'logo',

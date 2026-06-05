@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $blog->title)
+@section('title', $blog->meta_title ?: $blog->title)
+@section('meta_description', $blog->meta_description ?: Str::limit(strip_tags($blog->summary ?? ''), 160))
 
 @section('content')
 
@@ -119,5 +120,12 @@
     </div>
   </div>
 </section>
+
+@include('sections.faq', [
+  'faqs' => $blogFaqs,
+  'faqTitle' => $blog->title . ' FAQs',
+  'faqIntro' => 'Helpful answers related to this blog topic and the services discussed here.',
+  'faqBadges' => ['Relevant Answers', 'Expert Guidance', 'Quick Help'],
+])
 
 @endsection

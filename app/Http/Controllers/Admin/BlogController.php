@@ -34,6 +34,8 @@ public function ajax(Request $request)
     // Search
     if ($search) {
         $query->where('title', 'like', "%{$search}%")
+              ->orWhere('meta_title', 'like', "%{$search}%")
+              ->orWhere('meta_description', 'like', "%{$search}%")
               ->orWhere('summary', 'like', "%{$search}%")
               ->orWhere('short_description', 'like', "%{$search}%");
     }
@@ -104,6 +106,8 @@ public function ajax(Request $request)
 {
     $request->validate([
         'title' => 'required|string|max:255',
+        'meta_title' => 'nullable|string|max:255',
+        'meta_description' => 'nullable|string|max:500',
         'summary' => 'required|max:400',
         'short_description' => 'required',
         'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -120,6 +124,8 @@ public function ajax(Request $request)
     Blog::create([
         'title' => $request->title,
         'slug' => \Str::slug($request->title),
+        'meta_title' => $request->meta_title,
+        'meta_description' => $request->meta_description,
         'summary' => $request->summary,
         'short_description' => $request->short_description,
         'image' => $imageName,
@@ -145,6 +151,8 @@ public function ajax(Request $request)
 
     $request->validate([
         'title' => 'required|string|max:255',
+        'meta_title' => 'nullable|string|max:255',
+        'meta_description' => 'nullable|string|max:500',
         'summary' => 'required|max:400',
         'short_description' => 'required',
         'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -168,6 +176,8 @@ public function ajax(Request $request)
     $blog->update([
         'title' => $request->title,
         'slug' => \Str::slug($request->title),
+        'meta_title' => $request->meta_title,
+        'meta_description' => $request->meta_description,
         'summary' => $request->summary,
         'short_description' => $request->short_description,
         'status' => $request->status,

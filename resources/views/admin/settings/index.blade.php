@@ -44,6 +44,11 @@
                         <textarea name="address" class="form-control" rows="3">{{ old('address', $settings->address ?? '') }}</textarea>
                     </div>
                     <div class="col-md-12">
+                        <label class="form-label fw-semibold">Payment Link</label>
+                        <input type="url" name="payment_link" class="form-control" value="{{ old('payment_link', $settings->payment_link ?? '') }}" placeholder="https://...">
+                        <small class="text-muted">When added, the address on the frontend will open this link on tap.</small>
+                    </div>
+                    <div class="col-md-12">
                         <label class="form-label fw-semibold">Google Map Embed</label>
                         <textarea name="google_map" class="form-control" rows="4">{{ old('google_map', $settings->google_map ?? '') }}</textarea>
                     </div>

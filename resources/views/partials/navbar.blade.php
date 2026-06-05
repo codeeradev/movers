@@ -46,7 +46,20 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="{{ route('about-us') }}" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="{{ route('services') }}" class="nav-link">Services</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ route('services') }}" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                        @if(!empty($navServices) && $navServices->isNotEmpty())
+                            @foreach($navServices as $service)
+                                <a class="dropdown-item" href="{{ route('services.single', $service->slug) }}">{{ $service->title }}</a>
+                            @endforeach
+                            <div class="dropdown-divider"></div>
+                        @endif
+                        <a class="dropdown-item" href="{{ route('services') }}">View All Services</a>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="{{ route('happy-clients') }}" class="nav-link">Happy Clients</a></li>
                 <li class="nav-item"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>

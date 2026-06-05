@@ -32,6 +32,7 @@ public function store(Request $request)
         'phone'       => 'nullable|string|max:20',
         'email'       => 'nullable|email|max:255',
         'address'     => 'nullable|string',
+        'payment_link' => 'nullable|url|max:255',
         'footer_text' => 'nullable|string',
         'google_map'  => 'nullable|string',
 

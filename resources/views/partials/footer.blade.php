@@ -47,7 +47,7 @@
         <div class="ftco-footer-widget mb-4 ml-md-3">
           <h2 class="ftco-heading-2">Company</h2>
           <ul class="list-unstyled">
-            <li><a href="{{ url('/about') }}" class="py-2 d-block">About Us</a></li>
+            <li><a href="{{ route('about-us') }}" class="py-2 d-block">About Us</a></li>
             <li><a href="{{ route('services') }}" class="py-2 d-block">Services</a></li>
             <li><a href="{{ url('/blog') }}" class="py-2 d-block">Blog</a></li>
             <li><a href="{{ url('/terms') }}" class="py-2 d-block">Terms &amp; Conditions</a></li>
@@ -93,10 +93,19 @@
             <ul>
               <li>
                 <span class="icon icon-map-marker"></span>
+                @php
+                  $footerAddress = site_setting('address');
+                  $footerPaymentLink = site_setting('payment_link');
+                @endphp
+                @if($footerPaymentLink)
+                <a class="text" href="{{ $footerPaymentLink }}" target="_blank" rel="noopener">
+                  {{ $footerAddress ?: 'Address not available' }}
+                </a>
+                @else
                 <span class="text">
-                  House No. 164, 18th Cross B, Hoysala Nagar,
-                  Ramamurthy Nagar, Bengaluru – 560016
+                  {{ $footerAddress ?: 'Address not available' }}
                 </span>
+                @endif
               </li>
               <li>
                 <a href="tel:+919731166449">

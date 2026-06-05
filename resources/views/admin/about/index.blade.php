@@ -19,18 +19,20 @@
     <!-- Table -->
     <div class="card shadow-sm border-0">
         <div class="card-body">
-            <table id="aboutTable" class="table table-hover align-middle w-100">
-                <thead class="table-light">
-                    <tr>
-                        <th width="5%">#</th>
-                        <th>Title</th>
-                        <th width="15%">Image</th>
-                        <th>Description</th>
-                        <th width="10%">Status</th>
-                        <th width="15%">Action</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive">
+                <table id="aboutTable" class="table table-hover align-middle w-100">
+                    <thead class="table-light">
+                        <tr>
+                            <th width="5%">#</th>
+                            <th>Title</th>
+                            <th width="15%">Image</th>
+                            <th>Description</th>
+                            <th width="10%">Status</th>
+                            <th width="15%">Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -51,7 +53,10 @@
 
             <div class="modal-body" style="font-size:15px;line-height:1.8;color:#1f2933">
                 <div id="aboutModalImage" class="text-center mb-3"></div>
+                <div id="aboutModalSubtitle" class="mb-3"></div>
                 <div id="aboutModalDescription"></div>
+                <div id="aboutModalVision" class="mt-3"></div>
+                <div id="aboutModalMission" class="mt-3"></div>
             </div>
 
             <div class="modal-footer">
@@ -70,7 +75,17 @@
 
 <style>
 .card { border-radius: 12px; }
-.table td, .table th { vertical-align: middle; }
+.table td, .table th {
+    vertical-align: middle;
+    white-space: normal;
+    word-break: break-word;
+}
+.table-responsive {
+    overflow-x: auto;
+}
+#aboutTable td {
+    max-width: 1px;
+}
 .dataTables_filter input {
     border-radius: 20px;
     padding: 6px 12px;
@@ -113,6 +128,7 @@ $(function () {
         $.get('/about/' + id, function (res) {
 
             $('#aboutModalTitle').text(res.title);
+            $('#aboutModalSubtitle').text(res.subtitle || '');
 
             $('#aboutModalImage').html(
                 res.image
@@ -121,16 +137,12 @@ $(function () {
             );
 
             $('#aboutModalDescription').html(res.description);
+            $('#aboutModalVision').html(res.vision ? `<h5>Vision</h5><p>${res.vision}</p>` : '');
+            $('#aboutModalMission').html(res.mission ? `<h5>Mission</h5><p>${res.mission}</p>` : '');
 
-            // ✅ Correct modal show
-            $('#aboutDetailModal').modal('show');
+            const aboutModal = new bootstrap.Modal(document.getElementById('aboutDetailModal'));
+            aboutModal.show();
         });
-    });
-
-    // Cleanup backdrop on close (extra safety)
-    $('#aboutDetailModal').on('hidden.bs.modal', function () {
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
     });
 
     // Delete

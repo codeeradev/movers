@@ -85,7 +85,10 @@ public function ajax(Request $request)
     {
         $data = $request->validate([
             'title'       => 'required|string|max:255',
+            'subtitle'    => 'nullable|string|max:255',
             'description' => 'required|string',
+            'vision'      => 'nullable|string',
+            'mission'     => 'nullable|string',
             'status'      => 'required|in:0,1',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
@@ -115,7 +118,10 @@ public function ajax(Request $request)
 
         $data = $request->validate([
             'title'       => 'required|string|max:255',
+            'subtitle'    => 'nullable|string|max:255',
             'description' => 'required|string',
+            'vision'      => 'nullable|string',
+            'mission'     => 'nullable|string',
             'status'      => 'required|in:0,1',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
@@ -152,17 +158,20 @@ public function ajax(Request $request)
     }
 
     public function show($id)
-{
-    $about = \App\Models\About::findOrFail($id);
+    {
+        $about = \App\Models\About::findOrFail($id);
 
-    return response()->json([
-        'title'       => $about->title,
-        'description' => $about->description,
-        'image'       => $about->image
-            ? asset('uploads/about/'.$about->image)
-            : null,
-        'status'      => $about->status ? 'Active' : 'Inactive',
-    ]);
-}
+        return response()->json([
+            'title'       => $about->title,
+            'subtitle'    => $about->subtitle,
+            'description' => $about->description,
+            'vision'      => $about->vision,
+            'mission'     => $about->mission,
+            'image'       => $about->image
+                ? asset('uploads/about/'.$about->image)
+                : null,
+            'status'      => $about->status ? 'Active' : 'Inactive',
+        ]);
+    }
 
 }

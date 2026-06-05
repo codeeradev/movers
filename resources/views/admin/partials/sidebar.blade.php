@@ -166,6 +166,32 @@
   </div>
 </li>
 
+<!-- FAQ Management -->
+<li class="nav-item">
+  <a class="nav-link" data-toggle="collapse" href="#faqMenu" aria-expanded="false" aria-controls="faqMenu">
+    <span class="icon-bg">
+      <i class="mdi mdi-help-circle-outline menu-icon"></i>
+    </span>
+    <span class="menu-title">FAQ Management</span>
+    <i class="menu-arrow"></i>
+  </a>
+
+  <div class="collapse" id="faqMenu">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('faqs.index') }}">
+          FAQ List
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('faqs.create') }}">
+          Add FAQ
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+
 <!-- 📩 Requests Management -->
 <li class="nav-item">
   <a class="nav-link" data-toggle="collapse" href="#requestMenu"

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\CarMoveRequestController;
+use App\Http\Controllers\Admin\FaqController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/pricing', [HomeController::class, 'pricing'])->name('pricing');
@@ -66,6 +67,8 @@ Route::get('blogs/ajax', [BlogController::class, 'ajax'])->name('blogs.ajax');
 Route::resource('blogs', BlogController::class);
 Route::get('admin-services/ajax', [ServiceController::class, 'ajax'])->name('admin-services.ajax');
 Route::resource('admin-services', ServiceController::class);
+Route::get('faqs/ajax', [FaqController::class, 'ajax'])->name('faqs.ajax');
+Route::resource('faqs', FaqController::class);
  Route::resource('contact-messages', ContactMessageController::class)
         ->only(['index', 'show', 'destroy']);
 

@@ -16,18 +16,50 @@
             >
         </div>
 
-        <!-- Description -->
-        <!-- Description -->
-<div class="form-group">
-    <label class="font-weight-bold">Description</label>
-<textarea
-    name="description"
-    id="description"
-    class="form-control"
-    rows="6"
->{{ old('description', $about->description ?? '') }}</textarea>
+        <!-- Subtitle -->
+        <div class="form-group">
+            <label class="font-weight-bold">Subtitle</label>
+            <input
+                type="text"
+                name="subtitle"
+                class="form-control"
+                value="{{ old('subtitle', $about->subtitle ?? '') }}"
+                placeholder="Enter subtitle (e.g. About Us)"
+            >
+        </div>
 
-</div>
+        <!-- Description -->
+        <div class="form-group">
+            <label class="font-weight-bold">Description</label>
+            <textarea
+                name="description"
+                id="description"
+                class="form-control"
+                rows="6"
+            >{{ old('description', $about->description ?? '') }}</textarea>
+        </div>
+
+        <!-- Vision -->
+        <div class="form-group">
+            <label class="font-weight-bold">Vision</label>
+            <textarea
+                name="vision"
+                id="vision"
+                class="form-control"
+                rows="4"
+            >{{ old('vision', $about->vision ?? '') }}</textarea>
+        </div>
+
+        <!-- Mission -->
+        <div class="form-group">
+            <label class="font-weight-bold">Mission</label>
+            <textarea
+                name="mission"
+                id="mission"
+                class="form-control"
+                rows="4"
+            >{{ old('mission', $about->mission ?? '') }}</textarea>
+        </div>
 
 
         <!-- Image -->
@@ -73,10 +105,17 @@
 @push('scripts')
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#description'))
-        .catch(error => {
-            console.error(error);
+    document.addEventListener('DOMContentLoaded', function () {
+        ['description', 'vision', 'mission'].forEach(function (fieldId) {
+            const element = document.querySelector('#' + fieldId);
+            if (element) {
+                ClassicEditor
+                    .create(element)
+                    .catch(error => {
+                        console.error('CKEditor init error for #' + fieldId, error);
+                    });
+            }
         });
+    });
 </script>
 @endpush

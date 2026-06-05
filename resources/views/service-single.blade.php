@@ -325,4 +325,10 @@ $heroBackground = site_setting('hero_background_image')
     </div>
 </section>
 
+@include('sections.faq', [
+    'faqs' => $serviceFaqs,
+    'faqTitle' => $service->title . ' FAQs',
+    'faqIntro' => 'Questions customers ask before booking ' . $service->title . '.',
+])
+
 @endsection

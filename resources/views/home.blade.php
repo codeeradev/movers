@@ -12,6 +12,7 @@
     @include('sections.testimonials')
     @include('sections.about-us')
     @include('sections.blog')
+    @include('sections.faq', ['faqs' => $homeFaqs, 'faqTitle' => 'Move With Confidence', 'faqIntro' => 'Common questions about our moving services, process, and support.'])
 @endsection
 
 @push('scripts')
