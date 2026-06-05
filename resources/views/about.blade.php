@@ -1,11 +1,17 @@
 @extends('layouts.app')
-@section('title', 'About Us')
+@section('title', $about?->title ?: 'About Us')
 @section('content')
 
 @php
-$heroBackground = site_setting('hero_background_image')
-    ? asset('uploads/settings/' . site_setting('hero_background_image'))
-    : asset('images/bg_1.jpg');
+    $aboutTitle = $about?->title ?: 'About Us';
+    $aboutSubtitle = $about?->subtitle ?: 'Company profile';
+    $aboutLead = $about?->description
+        ? trim(strip_tags($about->description))
+        : 'Learn more about our story, our values, and the standards we keep for every move.';
+
+    $heroBackground = site_setting('hero_background_image')
+        ? asset('uploads/settings/' . site_setting('hero_background_image'))
+        : asset('images/bg_1.jpg');
 @endphp
 
 <section class="hero-wrap hero-wrap-2 about-hero" style="background-image: url('{{ $heroBackground }}');">
@@ -18,14 +24,10 @@ $heroBackground = site_setting('hero_background_image')
             <a href="{{ url('/') }}">Home <i class="ion-ios-arrow-forward"></i></a>
           </span>
           <span class="mr-2">
-            <a href="{{ route('about-us') }}">About <i class="ion-ios-arrow-forward"></i></a>
+            <a href="{{ route('about-us') }}">About Us <i class="ion-ios-arrow-forward"></i></a>
           </span>
         </p>
-        <span class="about-page-tag">Company profile</span>
-        <h1 class="mb-3 bread">About Us</h1>
-        <p class="about-page-lead">
-          Learn more about our story, our values, and the standards we keep for every move.
-        </p>
+        
       </div>
     </div>
   </div>
@@ -98,6 +100,6 @@ $heroBackground = site_setting('hero_background_image')
 </style>
 @endpush
 
-@include('sections.about-us')
+@include('sections.about-us', ['isDetailView' => true])
 
 @endsection
