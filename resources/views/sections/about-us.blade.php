@@ -180,12 +180,16 @@
         flex-wrap: wrap;
         gap: 12px;
         margin-top: 6px;
+        justify-content: flex-start;
     }
 
     .about-btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
+        min-width: 170px;
+        white-space: nowrap;
         background: linear-gradient(135deg, #fc983c 0%, #e85b2a 100%);
         color: #ffffff;
         font-size: 14px;
