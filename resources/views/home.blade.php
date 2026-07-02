@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Laxis Cargo Movers | Best Cargo Movers in Bangalore | Vehicle Transportation Services in Bangalore')
+@section('meta_description', 'Need trusted Cargo Movers in Bangalore? Laxis Cargo Movers offers vehicle transportation services in Bangalore, including car transport, bike transport, household shifting, office relocation, packing, loading, unloading, and timely doorstep delivery. We focus on safe handling, transparent pricing, and customer satisfaction.')
 
 @section('content')
     @include('sections.hero-wrap')
