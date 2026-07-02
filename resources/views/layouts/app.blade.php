@@ -6,6 +6,7 @@
     <meta name="description" content="@yield('meta_description', 'Need trusted Cargo Movers in Bangalore? Laxis Cargo Movers offers vehicle transportation services in Bangalore, including car transport, bike transport, household shifting, office relocation, packing, loading, unloading, and timely doorstep delivery. We focus on safe handling, transparent pricing, and customer satisfaction.')">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="canonical" href="https://laxiscargomovers.in/" />
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
