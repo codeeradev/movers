@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Laxis Cargo Movers | Best Cargo Movers in Bangalore | Vehicle Transportation Services in Bangalore')
 
 @section('content')
     @include('sections.hero-wrap')
