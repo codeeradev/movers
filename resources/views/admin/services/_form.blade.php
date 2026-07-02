@@ -49,10 +49,10 @@
                     type="text"
                     name="seo_title"
                     class="form-control"
-                    maxlength="60"
+                    
                     value="{{ old('seo_title', $service->seo_title ?? '') }}"
                     placeholder="Enter SEO title">
-                <small class="text-muted">Recommended: 50-60 characters.</small>
+               
             </div>
 
             <div class="col-md-12">
@@ -61,9 +61,9 @@
                     name="seo_description"
                     class="form-control"
                     rows="4"
-                    maxlength="160"
+                   
                     placeholder="Enter SEO description">{{ old('seo_description', $service->seo_description ?? '') }}</textarea>
-                <small class="text-muted">Recommended: 150-160 characters.</small>
+                
             </div>
         </div>
     </div>

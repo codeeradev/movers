@@ -78,8 +78,8 @@ public function store(Request $request)
     $data = $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
-        'seo_title' => 'nullable|string|max:60',
-        'seo_description' => 'nullable|string|max:160',
+        'seo_title' => 'nullable|string',
+        'seo_description' => 'nullable|string',
         'status' => 'required|in:0,1',
         'sort_order' => 'nullable|integer|min:0',
         'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
@@ -128,8 +128,8 @@ public function store(Request $request)
     $data = $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
-        'seo_title' => 'nullable|string|max:60',
-        'seo_description' => 'nullable|string|max:160',
+        'seo_title' => 'nullable|string',
+        'seo_description' => 'nullable|string',
         'status' => 'required|in:0,1',
         'sort_order' => 'nullable|integer|min:0',
         'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
