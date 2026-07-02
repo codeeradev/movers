@@ -28,6 +28,66 @@
 
     @stack('styles')
 
+  @verbatim
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://laxiscargomovers.in/#website",
+      "url":"https://laxiscargomovers.in/",
+      "name":"Laxis Cargo Movers",
+      "publisher":{
+        "@id":"https://laxiscargomovers.in/#business"
+      }
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://laxiscargomovers.in/#webpage",
+      "url":"https://laxiscargomovers.in/",
+      "isPartOf":{
+        "@id":"https://laxiscargomovers.in/#website"
+      },
+      "name":"Laxis Cargo Movers | Best Cargo Movers in Bangalore | Vehicle Transportation Services in Bangalore",
+      "headline":"Trusted Cargo Movers in Bangalore for Safe & Secure Vehicle Transportation",
+      "description":"Need trusted Cargo Movers in Bangalore? Laxis Cargo Movers offers vehicle transportation services in Bangalore, including car transport, bike transport, household shifting, office relocation, packing, loading, unloading, and timely doorstep delivery. We focus on safe handling, transparent pricing, and customer satisfaction."
+    },
+    {
+      "@type":"MovingCompany",
+      "@id":"https://laxiscargomovers.in/#business",
+      "name":"Laxis Cargo Movers",
+      "url":"https://laxiscargomovers.in/",
+      "telephone":[
+        "+91-9731166449",
+        "+91-7899418883"
+      ],
+      "email":"laxiscargomovers@gmail.com",
+      "description":"Need trusted Cargo Movers in Bangalore? Laxis Cargo Movers offers vehicle transportation services in Bangalore, including car transport, bike transport, household shifting, office relocation, packing, loading, unloading, and timely doorstep delivery. We focus on safe handling, transparent pricing, and customer satisfaction.",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"House No. 164, 18th Cross B, Hoysala Nagar, Ramamurthy Nagar",
+        "addressLocality":"Bengaluru",
+        "addressRegion":"Karnataka",
+        "postalCode":"560016",
+        "addressCountry":"IN"
+      },
+      "priceRange":"₹₹",
+      "contactPoint":{
+        "@type":"ContactPoint",
+        "telephone":"+91-9731166449",
+        "contactType":"customer service",
+        "availableLanguage":[
+          "English",
+          "Hindi"
+        ]
+      }
+    }
+  ]
+}
+</script>
+ @endverbatim
+
 </head>
 
 <body>
@@ -93,7 +153,10 @@
     <script src="{{ asset('js/google-map.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     @stack('scripts')
+
+    
 </body>
 
 </html>
