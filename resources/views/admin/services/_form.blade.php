@@ -36,7 +36,38 @@
             </div>
         </div>
     </div>
+<div class="card mt-4 shadow-sm border-0">
+    <div class="card-header bg-light">
+        <h5 class="mb-0" style="color: #000;">SEO Settings</h5>
+    </div>
 
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12">
+                <label class="form-label fw-semibold">SEO Title</label>
+                <input
+                    type="text"
+                    name="seo_title"
+                    class="form-control"
+                    maxlength="60"
+                    value="{{ old('seo_title', $service->seo_title ?? '') }}"
+                    placeholder="Enter SEO title">
+                <small class="text-muted">Recommended: 50-60 characters.</small>
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label fw-semibold">SEO Description</label>
+                <textarea
+                    name="seo_description"
+                    class="form-control"
+                    rows="4"
+                    maxlength="160"
+                    placeholder="Enter SEO description">{{ old('seo_description', $service->seo_description ?? '') }}</textarea>
+                <small class="text-muted">Recommended: 150-160 characters.</small>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="card-footer bg-white text-end">
         <button type="submit" class="btn btn-primary px-4">{{ $buttonText }}</button>
         <a href="{{ route('admin-services.index') }}" class="btn btn-secondary">Cancel</a>

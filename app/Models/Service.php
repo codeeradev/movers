@@ -13,5 +13,7 @@ class Service extends Model
         'image',
         'status',
         'sort_order',
+        'seo_title',
+    'seo_description',
     ];
 }

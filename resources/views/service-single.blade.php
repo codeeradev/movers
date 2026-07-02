@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('title', $service->title)
+@section('title', $service->seo_title ?: $service->title)
+
+@section('meta_description', $service->seo_description ?: \Illuminate\Support\Str::limit(strip_tags($service->description), 160))
 
 @section('content')
-
 {{-- ── Page Header ── --}}
 @php
 $heroBackground = site_setting('hero_background_image')
